@@ -1,0 +1,55 @@
+---
+title: "Quarto Website Demo for Scientific Communication"
+abstract: |
+    This is a Quarto website containing a demo of non-Hermiticity induced nodal phases with knotted graphs (spatial multigraphs) as topological fingerprints. This project showcases how Quarto can be used to create rich, interactive, and publication-quality scientific content. <br>To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+---
+
+Quarto is an open-source scientific and technical publishing system that builds on standard tools like Pandoc and Jupyter to create a powerful and flexible authoring environment.
+
+Here are some of the highlights:
+
+## Author with Ease and Flexibility
+One can simply author content in familiar Jupyter notebooks (`.ipynb`) or use a single, plain-text source file (`.qmd`) with any text editor you prefer, and in one click render publishable documents in multiple formats, and release them as interactive websites.
+
+## Rich Interactivity for Complex Visualizations
+For visual subjects like 3D structures, static images fall short. Quarto enables rich interactivity to help your audience explore the data and concepts.
+
+- **3D Visualizations:** Embed interactive 3D plots (e.g., using `plotly`, `pyvista`, `vedo`) to allow users to rotate, zoom. E.g. in [Interactive Plot](pyvista.ipynb).
+- **Diagrams:** Natively create graph and state diagrams using embedded support for Mermaid and Graphviz—perfect for illustrating theoretical models or experimental setups.
+
+```{mermaid}
+%%| label: fig-kg
+%%| fig-cap: This a simple Mermaid diagram.
+%%| echo: true
+%%| code-summary: Show Mermaid Code
+
+flowchart LR
+    A[Non-Hermitian Hamiltonian <br> H &ne; H<sup>&dagger;</sup>] --> B{Exceptional Points};
+    B --> C[Skeletonization];
+    C --> D[Knotted Graph];
+```
+
+## Full LaTeX Support and Multiple Output Formats
+Quarto provides a first-class authoring experience for $\LaTeX$, preserving the features that academic publishing relies on.
+
+- Write complex equations, like a non-Hermitian Hamiltonian, using standard $\LaTeX$ syntax: 
+$$
+H = H_0 + i\gamma \sigma_y
+$$ {#eq-H}
+- Effortlessly add citations, and cross-reference equations, figures, tables, and theorems. For example @fig-kg and @eq-H can be easily referenced by `@fig-kg` and `@eq-H`.
+- Generate multiple high-quality output formats from a single source file, including publication-ready PDFs, responsive HTML websites, MS Word documents, and ePub books.
+
+## Interactive Presentations with `Reveal.js`
+Transform your research into compelling, interactive presentations for conferences or lectures using Reveal.js. You can reuse content, code, and visualizations directly from your manuscript in your slides, ensuring consistency and saving valuable time.
+
+## Effortless Publishing and Sharing
+Share your work with the world with a single command. Quarto simplifies the process of publishing your entire project as a polished website to free hosting platforms.
+- GitHub Pages: `quarto publish gh-pages`
+- Netlify: `quarto publish netlify`
+- Posit Connect and other services are also supported.
+
+## Interactive Courses, Books, and Supplemental Materials
+Beyond single papers, Quarto is a complete scientific and technical publishing system. It is ideal for creating comprehensive resources for the scientific community.
+- **Paper Supplements:** Build an interactive website to accompany your paper, featuring executable code, interactive data visualizations, and extended appendices.
+- **Online Books:** Author entire books with chapters, parts, and bibliographies.
+- **Courses & Lecture Notes:** Develop full course websites with lecture notes that mix theory, equations, videos, and live, executable code examples that students can run and modify in their browser.

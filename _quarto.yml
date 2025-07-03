@@ -1,0 +1,33 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Quarto Demo"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: pyvista.ipynb
+        text: Interactive Plot
+  page-footer: "&copy; 2025 | <a href='https://quarto.org'>Quarto</a> | <a href='https://docs.pyvista.org'>PyVista</a>"
+
+author: 
+    - name: Xianquan Yan
+      email: yanx@u.nus.edu
+      affiliation: 
+        - name: Department of Physics, National University of Singapore
+          country: Singapore
+date: "2025-July-03"
+toc: true
+toc-location: right
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    code-fold: true
+    code-tools: true
+    toc: true
+    mermaid: 
+      theme: neutral

@@ -1,0 +1,72 @@
+[
+  {
+    "objectID": "pyvista.html",
+    "href": "pyvista.html",
+    "title": "Interactive Plot by PyVista and Plotly",
+    "section": "",
+    "text": "Code\nimport pyvista as pv\nfrom pyvista import examples\nfrom IPython.display import IFrame\n\n# Load an example dataset\nhills = examples.load_random_hills()\n\n# Create a plotter object. We will use the 'panel' backend\n# because it is designed for embedding and has a save method.\nplotter = pv.Plotter(notebook=True, window_size=[800, 600])\nplotter.add_mesh(hills, cmap='terrain', smooth_shading=True)\n# Define a filename for the plot\nhtml_filename = \"docs/pyvista_plot.html\"\nplotter.export_html(html_filename)\n\n# Display the saved HTML file in an IFrame.\nIFrame(src=html_filename, width=800, height=600)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Quarto Website Demo for Scientific Communication",
+    "section": "",
+    "text": "Quarto is an open-source scientific and technical publishing system that builds on standard tools like Pandoc and Jupyter to create a powerful and flexible authoring environment.\nHere are some of the highlights:"
+  },
+  {
+    "objectID": "index.html#author-with-ease-and-flexibility",
+    "href": "index.html#author-with-ease-and-flexibility",
+    "title": "Quarto Website Demo for Scientific Communication",
+    "section": "Author with Ease and Flexibility",
+    "text": "Author with Ease and Flexibility\nOne can simply author content in familiar Jupyter notebooks (.ipynb) or use a single, plain-text source file (.qmd) with any text editor you prefer, and in one click render publishable documents in multiple formats, and release them as interactive websites."
+  },
+  {
+    "objectID": "index.html#rich-interactivity-for-complex-visualizations",
+    "href": "index.html#rich-interactivity-for-complex-visualizations",
+    "title": "Quarto Website Demo for Scientific Communication",
+    "section": "Rich Interactivity for Complex Visualizations",
+    "text": "Rich Interactivity for Complex Visualizations\nFor visual subjects like 3D structures, static images fall short. Quarto enables rich interactivity to help your audience explore the data and concepts.\n\n3D Visualizations: Embed interactive 3D plots (e.g., using plotly, pyvista, vedo) to allow users to rotate, zoom. E.g. in Interactive Plot.\nDiagrams: Natively create graph and state diagrams using embedded support for Mermaid and Graphviz—perfect for illustrating theoretical models or experimental setups.\n\n\n\nCode\nflowchart LR\n    A[Non-Hermitian Hamiltonian &lt;br&gt; H &ne; H&lt;sup&gt;&dagger;&lt;/sup&gt;] --&gt; B{Exceptional Points};\n    B --&gt; C[Skeletonization];\n    C --&gt; D[Knotted Graph];\n\n\n\n\n\n\nflowchart LR\n    A[Non-Hermitian Hamiltonian &lt;br&gt; H &ne; H&lt;sup&gt;&dagger;&lt;/sup&gt;] --&gt; B{Exceptional Points};\n    B --&gt; C[Skeletonization];\n    C --&gt; D[Knotted Graph];\n\n\n\n\nFigure 1: This a simple Mermaid diagram."
+  },
+  {
+    "objectID": "index.html#full-latex-support-and-multiple-output-formats",
+    "href": "index.html#full-latex-support-and-multiple-output-formats",
+    "title": "Quarto Website Demo for Scientific Communication",
+    "section": "Full LaTeX Support and Multiple Output Formats",
+    "text": "Full LaTeX Support and Multiple Output Formats\nQuarto provides a first-class authoring experience for \\(\\LaTeX\\), preserving the features that academic publishing relies on.\n\nWrite complex equations, like a non-Hermitian Hamiltonian, using standard \\(\\LaTeX\\) syntax: \\[\nH = H_0 + i\\gamma \\sigma_y\n\\tag{1}\\]\nEffortlessly add citations, and cross-reference equations, figures, tables, and theorems. For example Figure 1 and Equation 1 can be easily referenced by @fig-kg and @eq-H.\nGenerate multiple high-quality output formats from a single source file, including publication-ready PDFs, responsive HTML websites, MS Word documents, and ePub books."
+  },
+  {
+    "objectID": "index.html#interactive-presentations-with-reveal.js",
+    "href": "index.html#interactive-presentations-with-reveal.js",
+    "title": "Quarto Website Demo for Scientific Communication",
+    "section": "Interactive Presentations with Reveal.js",
+    "text": "Interactive Presentations with Reveal.js\nTransform your research into compelling, interactive presentations for conferences or lectures using Reveal.js. You can reuse content, code, and visualizations directly from your manuscript in your slides, ensuring consistency and saving valuable time."
+  },
+  {
+    "objectID": "index.html#effortless-publishing-and-sharing",
+    "href": "index.html#effortless-publishing-and-sharing",
+    "title": "Quarto Website Demo for Scientific Communication",
+    "section": "Effortless Publishing and Sharing",
+    "text": "Effortless Publishing and Sharing\nShare your work with the world with a single command. Quarto simplifies the process of publishing your entire project as a polished website to free hosting platforms. - GitHub Pages: quarto publish gh-pages - Netlify: quarto publish netlify - Posit Connect and other services are also supported."
+  },
+  {
+    "objectID": "index.html#interactive-courses-books-and-supplemental-materials",
+    "href": "index.html#interactive-courses-books-and-supplemental-materials",
+    "title": "Quarto Website Demo for Scientific Communication",
+    "section": "Interactive Courses, Books, and Supplemental Materials",
+    "text": "Interactive Courses, Books, and Supplemental Materials\nBeyond single papers, Quarto is a complete scientific and technical publishing system. It is ideal for creating comprehensive resources for the scientific community. - Paper Supplements: Build an interactive website to accompany your paper, featuring executable code, interactive data visualizations, and extended appendices. - Online Books: Author entire books with chapters, parts, and bibliographies. - Courses & Lecture Notes: Develop full course websites with lecture notes that mix theory, equations, videos, and live, executable code examples that students can run and modify in their browser."
+  },
+  {
+    "objectID": "pyvista.html#pyvista-surface-plotting",
+    "href": "pyvista.html#pyvista-surface-plotting",
+    "title": "Interactive Plot by PyVista and Plotly",
+    "section": "",
+    "text": "Code\nimport pyvista as pv\nfrom pyvista import examples\nfrom IPython.display import IFrame\n\n# Load an example dataset\nhills = examples.load_random_hills()\n\n# Create a plotter object. We will use the 'panel' backend\n# because it is designed for embedding and has a save method.\nplotter = pv.Plotter(notebook=True, window_size=[800, 600])\nplotter.add_mesh(hills, cmap='terrain', smooth_shading=True)\n# Define a filename for the plot\nhtml_filename = \"docs/pyvista_plot.html\"\nplotter.export_html(html_filename)\n\n# Display the saved HTML file in an IFrame.\nIFrame(src=html_filename, width=800, height=600)"
+  },
+  {
+    "objectID": "pyvista.html#plotly-scatter-plotting",
+    "href": "pyvista.html#plotly-scatter-plotting",
+    "title": "Interactive Plot by PyVista and Plotly",
+    "section": "Plotly Scatter Plotting",
+    "text": "Plotly Scatter Plotting\n\n\nCode\nimport plotly.express as px\nimport plotly.io as pio\n# for vscode notebook only, no need for this in JupyterLab / Jupyter Notebook\npio.renderers.default = \"plotly_mimetype+notebook_connected\"\n\ndf = px.data.iris()\nfig = px.scatter(df, x=\"sepal_width\", y=\"sepal_length\", \n                 color=\"species\", \n                 marginal_y=\"violin\", \n                 marginal_x=\"box\", \n                #  trendline=\"ols\", \n                 template=\"simple_white\")\nfig.show()"
+  }
+]
