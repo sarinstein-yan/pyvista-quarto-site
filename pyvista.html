@@ -153,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#pyvista-surface-plotting" id="toc-pyvista-surface-plotting" class="nav-link active" data-scroll-target="#pyvista-surface-plotting"><code>PyVista</code> Surface Plotting</a></li>
+  <li><a href="#pyvista-visualization-of-non-hermiticity-induced-knotted-graph-topology-transitions" id="toc-pyvista-visualization-of-non-hermiticity-induced-knotted-graph-topology-transitions" class="nav-link active" data-scroll-target="#pyvista-visualization-of-non-hermiticity-induced-knotted-graph-topology-transitions"><code>PyVista</code> visualization of non-Hermiticity induced knotted graph topology transitions</a></li>
   <li><a href="#plotly-scatter-plotting" id="toc-plotly-scatter-plotting" class="nav-link" data-scroll-target="#plotly-scatter-plotting"><code>Plotly</code> Scatter Plotting</a></li>
   </ul>
 </nav>
@@ -199,50 +199,138 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="pyvista-surface-plotting" class="level2">
-<h2 class="anchored" data-anchor-id="pyvista-surface-plotting"><code>PyVista</code> Surface Plotting</h2>
+<section id="pyvista-visualization-of-non-hermiticity-induced-knotted-graph-topology-transitions" class="level2">
+<h2 class="anchored" data-anchor-id="pyvista-visualization-of-non-hermiticity-induced-knotted-graph-topology-transitions"><code>PyVista</code> visualization of non-Hermiticity induced knotted graph topology transitions</h2>
+<p>When non-Hermitian perturbation is small, the original knot topology is preserved (<a href="#fig-th0.1" class="quarto-xref">Figure&nbsp;1</a>).</p>
+<div id="cell-fig-th0.1" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyvista <span class="im">as</span> pv</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyvista <span class="im">import</span> examples</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>thickness <span class="op">=</span> <span class="fl">0.1</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load an example dataset</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>hills <span class="op">=</span> examples.load_random_hills()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ES_file <span class="op">=</span> <span class="ss">f"docs/ES_th=</span><span class="sc">{</span>thickness<span class="sc">}</span><span class="ss">.html"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>KG_file <span class="op">=</span> <span class="ss">f"docs/KG_th=</span><span class="sc">{</span>thickness<span class="sc">}</span><span class="ss">.html"</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a plotter object. We will use the 'panel' backend</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># because it is designed for embedding and has a save method.</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>plotter <span class="op">=</span> pv.Plotter(notebook<span class="op">=</span><span class="va">True</span>, window_size<span class="op">=</span>[<span class="dv">800</span>, <span class="dv">600</span>])</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>plotter.add_mesh(hills, cmap<span class="op">=</span><span class="st">'terrain'</span>, smooth_shading<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a filename for the plot</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>html_filename <span class="op">=</span> <span class="st">"docs/pyvista_plot.html"</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>plotter.export_html(html_filename)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the saved HTML file in an IFrame.</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>IFrame(src<span class="op">=</span>html_filename, width<span class="op">=</span><span class="dv">800</span>, height<span class="op">=</span><span class="dv">600</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the saved HTML files side by side.</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>HTML(<span class="ss">f"""</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;div style="display: flex; justify-content: space-between;"&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">    &lt;iframe src="</span><span class="sc">{</span>ES_file<span class="sc">}</span><span class="ss">" width="800" height="500" style="border: none;"&gt;&lt;/iframe&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">    &lt;iframe src="</span><span class="sc">{</span>KG_file<span class="sc">}</span><span class="ss">" width="800" height="500" style="border: none;"&gt;&lt;/iframe&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;/div&gt;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">"""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div id="fig-th0.1" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-th0.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 
-        <iframe width="800" height="600" src="pyvista_plot.html" frameborder="0" allowfullscreen=""></iframe>
-        
+<div style="display: flex; justify-content: space-between;">
+    <iframe id="plot1" src="docs/ES_th=0.1.html" width="800" height="500" style="border: none;"></iframe>
+    <iframe id="plot2" src="docs/KG_th=0.1.html" width="800" height="500" style="border: none;"></iframe>
+</div>
+
+<script>
+    function syncScroll(event) {
+        const otherPlot = event.target.id === "plot1" ? document.getElementById("plot2") : document.getElementById("plot1");
+        otherPlot.contentWindow.scrollTo(event.target.contentWindow.scrollX, event.target.contentWindow.scrollY);
+    }
+
+    document.getElementById("plot1").addEventListener("scroll", syncScroll);
+    document.getElementById("plot2").addEventListener("scroll", syncScroll);
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-th0.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Non-Hermiticity = 0.1. The original knot topology is preserved.
+</figcaption>
+</figure>
+</div>
+</div>
+<p>When non-Hermiticity is prevalent enough, the exceptional surface starts to touch itself, leading to a topology transition — the skeleton (i.e., medial axis) of the exceptional surface becomes a knotted graph (a.k.a. spatial multigraph). As the non-Hermiticity evolves, the knotted graph topology evolves accordingly, leading to a plethora of exotic 3D spatial geometries (<a href="#fig-th0.2" class="quarto-xref">Figure&nbsp;2</a>, <a href="#fig-th0.7" class="quarto-xref">Figure&nbsp;3</a>).</p>
+<div id="cell-fig-th0.2" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>thickness <span class="op">=</span> <span class="fl">0.2</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ES_file <span class="op">=</span> <span class="ss">f"docs/ES_th=</span><span class="sc">{</span>thickness<span class="sc">}</span><span class="ss">.html"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>KG_file <span class="op">=</span> <span class="ss">f"docs/KG_th=</span><span class="sc">{</span>thickness<span class="sc">}</span><span class="ss">.html"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the saved HTML files side by side.</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>HTML(<span class="ss">f"""</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;div style="display: flex; justify-content: space-between;"&gt;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ss">    &lt;iframe src="</span><span class="sc">{</span>ES_file<span class="sc">}</span><span class="ss">" width="800" height="500" style="border: none;"&gt;&lt;/iframe&gt;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ss">    &lt;iframe src="</span><span class="sc">{</span>KG_file<span class="sc">}</span><span class="ss">" width="800" height="500" style="border: none;"&gt;&lt;/iframe&gt;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;/div&gt;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ss">"""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-th0.2" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="6">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-th0.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+
+<div style="display: flex; justify-content: space-between;">
+    <iframe src="docs/ES_th=0.2.html" width="800" height="500" style="border: none;"></iframe>
+    <iframe src="docs/KG_th=0.2.html" width="800" height="500" style="border: none;"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-th0.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Non-Hermiticity = 0.2. The exceptional surface starts to touch itself, and the skeleton of the exceptional surface becomes a knotted graph.
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="cell-fig-th0.7" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>thickness <span class="op">=</span> <span class="fl">0.7</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>ES_file <span class="op">=</span> <span class="ss">f"docs/ES_th=</span><span class="sc">{</span>thickness<span class="sc">}</span><span class="ss">.html"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>KG_file <span class="op">=</span> <span class="ss">f"docs/KG_th=</span><span class="sc">{</span>thickness<span class="sc">}</span><span class="ss">.html"</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the saved HTML files side by side.</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>HTML(<span class="ss">f"""</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;div style="display: flex; justify-content: space-between;"&gt;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ss">    &lt;iframe src="</span><span class="sc">{</span>ES_file<span class="sc">}</span><span class="ss">" width="800" height="500" style="border: none;"&gt;&lt;/iframe&gt;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ss">    &lt;iframe src="</span><span class="sc">{</span>KG_file<span class="sc">}</span><span class="ss">" width="800" height="500" style="border: none;"&gt;&lt;/iframe&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;/div&gt;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="ss">"""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-th0.7" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="7">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-th0.7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+
+<div style="display: flex; justify-content: space-between;">
+    <iframe src="docs/ES_th=0.7.html" width="800" height="500" style="border: none;"></iframe>
+    <iframe src="docs/KG_th=0.7.html" width="800" height="500" style="border: none;"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-th0.7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Non-Hermiticity = 0.7. As non-Hermiticity evolves, the knotted graph topology evolves accordingly, leading to a plethora of exotic 3D spatial geometries.
+</figcaption>
+</figure>
+</div>
+</div>
 </section>
 <section id="plotly-scatter-plotting" class="level2">
 <h2 class="anchored" data-anchor-id="plotly-scatter-plotting"><code>Plotly</code> Scatter Plotting</h2>
 <div id="159c01c7" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># for vscode notebook only, no need for this in JupyterLab / Jupyter Notebook</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pio.renderers.default <span class="op">=</span> <span class="st">"plotly_mimetype+notebook_connected"</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> px.data.iris()</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.scatter(df, x<span class="op">=</span><span class="st">"sepal_width"</span>, y<span class="op">=</span><span class="st">"sepal_length"</span>, </span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                 color<span class="op">=</span><span class="st">"species"</span>, </span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                 marginal_y<span class="op">=</span><span class="st">"violin"</span>, </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                 marginal_x<span class="op">=</span><span class="st">"box"</span>, </span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                <span class="co">#  trendline="ols", </span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                 template<span class="op">=</span><span class="st">"simple_white"</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># for vscode notebook only, no need for this in JupyterLab / Jupyter Notebook</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>pio.renderers.default <span class="op">=</span> <span class="st">"plotly_mimetype+notebook_connected"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> px.data.iris()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.scatter(df, x<span class="op">=</span><span class="st">"sepal_width"</span>, y<span class="op">=</span><span class="st">"sepal_length"</span>, </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                 color<span class="op">=</span><span class="st">"species"</span>, </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                 marginal_y<span class="op">=</span><span class="st">"violin"</span>, </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                 marginal_x<span class="op">=</span><span class="st">"box"</span>, </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                <span class="co">#  trendline="ols", </span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                 template<span class="op">=</span><span class="st">"simple_white"</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
         <script type="text/javascript">
@@ -409,7 +497,7 @@ if (outputEl) {{
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/sarinstein-yan\.github\.io\/pyvista-quarto-site\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
