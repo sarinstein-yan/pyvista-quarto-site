@@ -202,42 +202,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="pyvista-visualization-of-non-hermiticity-induced-knotted-graph-topology-transitions" class="level2">
 <h2 class="anchored" data-anchor-id="pyvista-visualization-of-non-hermiticity-induced-knotted-graph-topology-transitions"><code>PyVista</code> visualization of non-Hermiticity induced knotted graph topology transitions</h2>
 <p>When non-Hermitian perturbation is small, the original knot topology is preserved (<a href="#fig-th0.1" class="quarto-xref">Figure&nbsp;1</a>).</p>
-<div id="cell-fig-th0.1" class="cell">
+<div id="cell-fig-th0.1" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>thickness <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ES_file <span class="op">=</span> <span class="ss">f"docs/ES_th=</span><span class="sc">{</span>thickness<span class="sc">}</span><span class="ss">.html"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>KG_file <span class="op">=</span> <span class="ss">f"docs/KG_th=</span><span class="sc">{</span>thickness<span class="sc">}</span><span class="ss">.html"</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the saved HTML files side by side.</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>HTML(<span class="ss">f"""</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;div style="display: flex; justify-content: space-between;"&gt;</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">    &lt;iframe src="</span><span class="sc">{</span>ES_file<span class="sc">}</span><span class="ss">" width="800" height="500" style="border: none;"&gt;&lt;/iframe&gt;</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">    &lt;iframe src="</span><span class="sc">{</span>KG_file<span class="sc">}</span><span class="ss">" width="800" height="500" style="border: none;"&gt;&lt;/iframe&gt;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;/div&gt;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">"""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> display_html(nonHermticity):</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    ES_file <span class="op">=</span> <span class="ss">f"assets/ES_nH=</span><span class="sc">{</span>nonHermticity<span class="sc">}</span><span class="ss">.html"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    SG_file <span class="op">=</span> <span class="ss">f"assets/SG_nH=</span><span class="sc">{</span>nonHermticity<span class="sc">}</span><span class="ss">.html"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Display the saved HTML files side by side.</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> HTML(<span class="ss">f"""</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ss">    &lt;div style="display: flex; justify-content: space-between;"&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ss">        &lt;iframe src="</span><span class="sc">{</span>ES_file<span class="sc">}</span><span class="ss">" width="800" height="500" style="border: none;"&gt;&lt;/iframe&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">        &lt;iframe src="</span><span class="sc">{</span>SG_file<span class="sc">}</span><span class="ss">" width="800" height="500" style="border: none;"&gt;&lt;/iframe&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">    &lt;/div&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">    """</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>display_html(<span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="fig-th0.1" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
+<div id="fig-th0.1" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="9">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-th0.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 
-<div style="display: flex; justify-content: space-between;">
-    <iframe id="plot1" src="docs/ES_th=0.1.html" width="800" height="500" style="border: none;"></iframe>
-    <iframe id="plot2" src="docs/KG_th=0.1.html" width="800" height="500" style="border: none;"></iframe>
-</div>
-
-<script>
-    function syncScroll(event) {
-        const otherPlot = event.target.id === "plot1" ? document.getElementById("plot2") : document.getElementById("plot1");
-        otherPlot.contentWindow.scrollTo(event.target.contentWindow.scrollX, event.target.contentWindow.scrollY);
-    }
-
-    document.getElementById("plot1").addEventListener("scroll", syncScroll);
-    document.getElementById("plot2").addEventListener("scroll", syncScroll);
-</script>
+    <div style="display: flex; justify-content: space-between;">
+        <iframe src="assets/ES_nH=0.1.html" width="800" height="500" style="border: none;"></iframe>
+        <iframe src="assets/SG_nH=0.1.html" width="800" height="500" style="border: none;"></iframe>
+    </div>
+    
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-th0.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Non-Hermiticity = 0.1. The original knot topology is preserved.
@@ -245,33 +236,22 @@ Figure&nbsp;1: Non-Hermiticity = 0.1. The original knot topology is preserved.
 </figure>
 </div>
 </div>
-<p>When non-Hermiticity is prevalent enough, the exceptional surface starts to touch itself, leading to a topology transition — the skeleton (i.e., medial axis) of the exceptional surface becomes a knotted graph (a.k.a. spatial multigraph). As the non-Hermiticity evolves, the knotted graph topology evolves accordingly, leading to a plethora of exotic 3D spatial geometries (<a href="#fig-th0.2" class="quarto-xref">Figure&nbsp;2</a>, <a href="#fig-th0.7" class="quarto-xref">Figure&nbsp;3</a>).</p>
-<div id="cell-fig-th0.2" class="cell">
+<p>When non-Hermiticity is prevalent enough, the exceptional surface starts to touch itself, leading to a topology transition — the skeleton (i.e., medial axis) of the exceptional surface becomes a knotted graph (a.k.a. spatial multigraph).</p>
+<p>As the non-Hermiticity evolves, the knotted graph topology evolves accordingly, leading to a plethora of exotic 3D spatial geometries (<a href="#fig-th0.2" class="quarto-xref">Figure&nbsp;2</a>, <a href="#fig-th0.5" class="quarto-xref">Figure&nbsp;3</a>).</p>
+<div id="cell-fig-th0.2" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>thickness <span class="op">=</span> <span class="fl">0.2</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ES_file <span class="op">=</span> <span class="ss">f"docs/ES_th=</span><span class="sc">{</span>thickness<span class="sc">}</span><span class="ss">.html"</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>KG_file <span class="op">=</span> <span class="ss">f"docs/KG_th=</span><span class="sc">{</span>thickness<span class="sc">}</span><span class="ss">.html"</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the saved HTML files side by side.</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>HTML(<span class="ss">f"""</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;div style="display: flex; justify-content: space-between;"&gt;</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ss">    &lt;iframe src="</span><span class="sc">{</span>ES_file<span class="sc">}</span><span class="ss">" width="800" height="500" style="border: none;"&gt;&lt;/iframe&gt;</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ss">    &lt;iframe src="</span><span class="sc">{</span>KG_file<span class="sc">}</span><span class="ss">" width="800" height="500" style="border: none;"&gt;&lt;/iframe&gt;</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;/div&gt;</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ss">"""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>display_html(<span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="fig-th0.2" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="6">
+<div id="fig-th0.2" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="10">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-th0.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 
-<div style="display: flex; justify-content: space-between;">
-    <iframe src="docs/ES_th=0.2.html" width="800" height="500" style="border: none;"></iframe>
-    <iframe src="docs/KG_th=0.2.html" width="800" height="500" style="border: none;"></iframe>
-</div>
+    <div style="display: flex; justify-content: space-between;">
+        <iframe src="assets/ES_nH=0.2.html" width="800" height="500" style="border: none;"></iframe>
+        <iframe src="assets/SG_nH=0.2.html" width="800" height="500" style="border: none;"></iframe>
+    </div>
+    
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-th0.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Non-Hermiticity = 0.2. The exceptional surface starts to touch itself, and the skeleton of the exceptional surface becomes a knotted graph.
@@ -279,35 +259,23 @@ Figure&nbsp;2: Non-Hermiticity = 0.2. The exceptional surface starts to touch it
 </figure>
 </div>
 </div>
-<div id="cell-fig-th0.7" class="cell">
+<div id="cell-fig-th0.5" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>thickness <span class="op">=</span> <span class="fl">0.7</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>ES_file <span class="op">=</span> <span class="ss">f"docs/ES_th=</span><span class="sc">{</span>thickness<span class="sc">}</span><span class="ss">.html"</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>KG_file <span class="op">=</span> <span class="ss">f"docs/KG_th=</span><span class="sc">{</span>thickness<span class="sc">}</span><span class="ss">.html"</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the saved HTML files side by side.</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>HTML(<span class="ss">f"""</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;div style="display: flex; justify-content: space-between;"&gt;</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ss">    &lt;iframe src="</span><span class="sc">{</span>ES_file<span class="sc">}</span><span class="ss">" width="800" height="500" style="border: none;"&gt;&lt;/iframe&gt;</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ss">    &lt;iframe src="</span><span class="sc">{</span>KG_file<span class="sc">}</span><span class="ss">" width="800" height="500" style="border: none;"&gt;&lt;/iframe&gt;</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;/div&gt;</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="ss">"""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>display_html(<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="fig-th0.7" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="7">
+<div id="fig-th0.5" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="11">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-th0.7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="fig-th0.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 
-<div style="display: flex; justify-content: space-between;">
-    <iframe src="docs/ES_th=0.7.html" width="800" height="500" style="border: none;"></iframe>
-    <iframe src="docs/KG_th=0.7.html" width="800" height="500" style="border: none;"></iframe>
+    <div style="display: flex; justify-content: space-between;">
+        <iframe src="assets/ES_nH=0.5.html" width="800" height="500" style="border: none;"></iframe>
+        <iframe src="assets/SG_nH=0.5.html" width="800" height="500" style="border: none;"></iframe>
+    </div>
+    
 </div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-th0.7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Non-Hermiticity = 0.7. As non-Hermiticity evolves, the knotted graph topology evolves accordingly, leading to a plethora of exotic 3D spatial geometries.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-th0.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Non-Hermiticity = 0.5. As non-Hermiticity evolves, the knotted graph topology evolves accordingly, leading to a plethora of exotic 3D spatial geometries.
 </figcaption>
 </figure>
 </div>
